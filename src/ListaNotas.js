@@ -6,7 +6,7 @@ class ListaNotas{
         return this.lista;
     }
     AgregarNota(nota){
-        this.lista.push(nota);
+        this.lista.unshift(nota);
     }
     BorrarNota(index){
         this.lista.splice(index,1);
