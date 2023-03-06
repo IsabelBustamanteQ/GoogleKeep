@@ -12,6 +12,15 @@ class ListaNotas{
         this.lista.splice(index,1);
         this.MostrarLista();
     }
+    EditarNota(index){
+        const tituloNota = document.querySelector("#tituloNota");
+        let tituloNuevo=this.lista[index].GetTitulo();
+        const descripcionNota = document.querySelector("#descripcionNota");
+        let descripcionNueva=this.lista[index].GetDescripcion();
+        tituloNota.value = tituloNuevo;
+        descripcionNota.value = descripcionNueva;
+        this.BorrarNota(index);
+    }
     
     MostrarLista(filtrarNotas=null){
         listaNotasHTML.innerText="";
@@ -21,17 +30,24 @@ class ListaNotas{
             const title = document.createElement("h3");
             const content = document.createElement("p");
             const deleteButton=document.createElement("button");
-            //console.log(index);
+            const botonEditar = document.createElement("button");
+
             title.innerText = nota.GetTitulo();
             content.innerText = nota.GetDescripcion();
             deleteButton.innerText="Eliminar";
+            botonEditar.innerText="Editar";
     
             deleteButton.onclick=()=> {
                 this.BorrarNota(index);
             };
+
+            botonEditar.onclick=()=>{
+                this.EditarNota(index);
+            }
             listItem.appendChild(title);
             listItem.appendChild(content);
             listItem.appendChild(deleteButton);
+            listItem.appendChild(botonEditar);
             listaNotasHTML.appendChild(listItem);
         });
     }
