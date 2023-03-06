@@ -4,9 +4,8 @@ import ListaNotas from "./ListaNotas.js";
 const formularioNota = document.querySelector("#formularioNota");
 const tituloNota = document.querySelector("#tituloNota");
 const descrpcionNota=document.querySelector("#descripcionNota");
-const contenidoTituloNota = document.querySelector("#contenidoTituloNota");
-const contenidoDescripcionNota = document.querySelector("#contenidoDescripcionNota");
 const listaNotasHTML = document.querySelector("#listaNotasHTML");
+const BotonBuscar=document.getElementById("botonBuscar");
 
 let listaNotasNueva = new ListaNotas();
 formularioNota.addEventListener("submit", event => {
@@ -16,3 +15,7 @@ formularioNota.addEventListener("submit", event => {
     listaNotasHTML.innerHTML = "";
     listaNotasNueva.MostrarLista();
 })
+BotonBuscar.onclick=()=>{
+    const textoABuscar=document.querySelector("#textoABuscar").value;
+    listaNotasNueva.BuscarNotas(textoABuscar);
+}
