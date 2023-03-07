@@ -55,7 +55,8 @@ class ListaNotas{
         console.log('buscado: %s',buscado)
         let coincidencias=this.GetLista().filter((nota)=> {
             const titulo= nota.titulo.toLowerCase();
-            return titulo.includes(buscado.toLowerCase());
+            const descripcion = nota.descripcion.toLowerCase();
+            return titulo.includes(buscado.toLowerCase()) || descripcion.includes(buscado.toLowerCase());
         });
         this.MostrarLista(coincidencias);
     }
